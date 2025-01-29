@@ -21,5 +21,5 @@ public class Inimigo {
             hp = 0; // Garante que a vida não fique negativa
         }
         System.out.println(nome + " recebeu " + dano + " de dano! Vida restante: " + hp);
-    }// Reduz a vida do inimigo.
+    }// Reduz a vida do inimigo .
 }
