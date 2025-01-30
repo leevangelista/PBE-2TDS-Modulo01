@@ -1,11 +1,20 @@
 public class Personagem {
     private int id;
-    private string nome;
+    private String nome;
     private int hp;
     private int forca;
     private int inteligencia;
-    private int dano;
-    ptivate int ataque;
+//    private int dano;
+//    ptivate int ataque;
+
+
+    public Personagem(int id, String nome, int hp, int forca, int inteligencia) {
+        this.id = id;
+        this.nome = nome;
+        this.hp = hp;
+        this.forca = forca;
+        this.inteligencia = inteligencia;
+    }
 
     public int getId() {
         return id;
@@ -15,11 +24,11 @@ public class Personagem {
         this.id = id;
     }
 
-    public string getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(string nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -43,38 +52,23 @@ public class Personagem {
         return inteligencia;
     }
 
-    public void setInteligencia(int inteligencia) {
-        this.inteligencia = inteligencia;
-    }
-    public void receberDano(int dano) {
-        if (dano > 0) {
-            this.vida -= dano;
-            if (this.hp < 0) {
-                this.hp = 0;
-            }
-            System.out.println("O personagem recebeu " + dano + " de dano.");
-        } else {
-            System.out.println("O dano não pode ser menor ou igual a zero.");
-        }
+
+    public int receberDano(int danoInimigo) {
+        setHp(hp - danoInimigo);
+        return getHp();
     }
 
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
+    public int atacar(int hpInimigo, int ataque) {
+        hpInimigo = hpInimigo - ataque;
+        return hpInimigo;
     }
 
-    public void setDano(int dano) {
-        this.dano = dano;
-    }
-    public void ataque(int ataque) {
-        if (ataque > 0) {
-            this.ataque = forca;
-            if (this.ataque > 0) {
-                this.ataque = 10;
-            }
-            System.out.println("O personagem deu " + ataque + "de dano";);
-        }else  {
-            System.out.println("O ataque não pode ser menor que 10");
-        }
+    public void info(int id, String  nome, int hp, int forca, int inteligencia){
+        System.out.println("Id: "+id);
+        System.out.println("Nome: "+nome);
+        System.out.println("HP: "+hp);
+        System.out.println("Força: "+forca);
+        System.out.println("Inteligência: "+inteligencia);
     }
 
 }

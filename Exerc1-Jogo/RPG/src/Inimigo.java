@@ -50,7 +50,15 @@ public class Inimigo {
     }
 
     public int receberDano(int danoPesonagem) {
-        return hp - danoPesonagem;
+        setHp( hp - danoPesonagem);
+        return getHp();
+    }
+
+    public void info(int id, String  nome, int hp, int dano){
+        System.out.println("Id: "+id);
+        System.out.println("Nome: "+nome);
+        System.out.println("HP: "+hp);
+        System.out.println("Dano: "+dano);
     }
 }
 
