@@ -21,7 +21,7 @@ public class Emprestimo {
     public void adicionar_livro(Livro livro, int quantidade) {
         this.livro = livro;
         livro.reduzir_estoque(quantidade);
-        this.quantidade += quantidade;
+        this.quantidade = quantidade;
     }
 
     public int calcular_total() {
