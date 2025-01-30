@@ -2,7 +2,7 @@
 
 ## Contexto
 Você é o desenvolvedor principal de um jogo de RPG simples que será utilizado em uma atividade educacional.
-A primeira tarefa é implementar o sistema de combate básico entre personagens e inimigos. Para isso, você precisa criar as classes que representam o Personagem, o Inimigo e os Ataques. Cada classe deve ter atributos e comportamentos que reflitam um sistema de combate de RPG, como ataque físico, ataque mágico e cálculo de dano baseado no nível do personagem ou na experiência adquirida.
+A primeira tarefa é implementar o sistema de combate básico entre personagens e inimigos. Para isso, você precisa criar as classes que representam o Personagem, o Inimigo e os Ataques. Cada classe deve ter atributos e comportamentos que reflitam um sistema de combate de RPG, como ataque físico, ataque mágico e cálculo de dano baseado no nível do Personagem ou na experiência adquirida.
 
 ## Objetivo
 Criar as classes de um jogo de RPG simples.
@@ -11,7 +11,7 @@ Criar as classes de um jogo de RPG simples.
 2. **Inimigo**: Representa os inimigos do jogo.
 3. **Ataque**: Representa os ataques que existem no jogo.
 
-A interação entre essas classes deve permitir a simulação de um combate entre o personagem e inimigo.
+A interação entre essas classes deve permitir a simulação de um combate entre o Personagem e inimigo.
 
 ---
 
@@ -19,14 +19,14 @@ A interação entre essas classes deve permitir a simulação de um combate entr
 
 ### Classe Personagem
 - **Atributos**: 
-  - `id` (identificador do personagem)
-  - `nome` (nome do personagem)
-  - `hp` (vida total do personagem)
-  - `forca` (quantidade do atributo força do personagem)
+  - `id` (identificador do Personagem)
+  - `nome` (nome do Personagem)
+  - `hp` (vida total do Personagem)
+  - `forca` (quantidade do atributo força do Personagem)
   - `inteligencia` (quantidade do atributo inteligência do persogem)
 - **Métodos**:
   - `atacar(inimigo, ataque)`: Reduz a quantidade de vida do inimigo com base no dano do ataque(funcão calcularDanoPersonagem).
-  - `receber_dano()`: Reduz a vida do personagem.
+  - `receber_dano()`: Reduz a vida do Personagem.
 
 ### Classe Inimigo
 - **Atributos**: 
@@ -35,7 +35,7 @@ A interação entre essas classes deve permitir a simulação de um combate entr
   - `hp` (vida total do inimigo)
   - `dano` (dano que o inimigo causa)
 - **Métodos**:
-  - `atacar(personagem, ataque)`: Reduz a quantidade de vida do personagem com base no dano do ataque(funcão calcularDanoInimigo).
+  - `atacar(Personagem, ataque)`: Reduz a quantidade de vida do Personagem com base no dano do ataque(funcão calcularDanoInimigo).
   - `receber_dano()`: Reduz a vida do inimigo.
 
 ### Classe Ataque
@@ -44,9 +44,9 @@ A interação entre essas classes deve permitir a simulação de um combate entr
   - `tipo` (fisico ou magico)
   - `dano` (dano que o ataque causa)
 - **Métodos**:
-  - `calcularDanoPersonagem(personagem)`: Faz o calculo ao realizar o ataque, o calculo tem como base:
-        - se for ataque físico é o dano multiplacado pela quantidade de força do personagem.
-        - se for ataque mágico é o dano multiplacado pela quantidade de inteligência do personagem.
+  - `calcularDanoPersonagem(Personagem)`: Faz o calculo ao realizar o ataque, o calculo tem como base:
+        - se for ataque físico é o dano multiplacado pela quantidade de força do Personagem.
+        - se for ataque mágico é o dano multiplacado pela quantidade de inteligência do Personagem.
   - `calcularDanoInimigo(inimigo)`: Faz o calculo do dano do inimigo, o calculo é o somatorio do dano do inimigo com o dano do ataque.
 
 ---
