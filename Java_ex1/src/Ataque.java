@@ -1,18 +1,33 @@
-public class Ataque extends Personagem {
+public class Ataque {
+    private int id;
+    private String tipo; // "fisico" ou "magico"
+    private int dano;
 
-    int id, dano;
-    String tipo;
-
-    // Definir método construtor
-    public Ataque(int id, int dano, String tipo, String nome, int forca, int inteligencia) {
-        super(nome, forca, inteligencia);  // Adicionando 'nome' no super()
+    public Ataque(int id, String tipo, int dano) {
         this.id = id;
-        this.dano = dano;
         this.tipo = tipo;
+        this.dano = dano;
     }
 
-    public void calcularDanoPersonagem() {
-        if (tipo)
+    public int calcularDanoPersonagem(Personagem personagem) {
+        if (this.tipo.equals("fisico")) {
+            return this.dano * personagem.getForca();  // Acesso através do getter
+        } else if (this.tipo.equals("magico")) {
+            return this.dano * personagem.getInteligencia();  // Acesso através do getter
+        }
+        return 0;
     }
 
+    public int calcularDanoInimigo(Inimigo inimigo) {
+        return this.dano + inimigo.getDano();  // Acesso através do getter
+    }
+
+    // Getters
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getDano() {
+        return dano;
+    }
 }
