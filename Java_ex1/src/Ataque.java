@@ -11,15 +11,15 @@ public class Ataque {
 
     public int calcularDanoPersonagem(Personagem personagem) {
         if (this.tipo.equals("fisico")) {
-            return this.dano * personagem.getForca();  // Acesso através do getter
+            return this.dano * personagem.getForca();
         } else if (this.tipo.equals("magico")) {
-            return this.dano * personagem.getInteligencia();  // Acesso através do getter
+            return this.dano * personagem.getInteligencia();
         }
         return 0;
     }
 
     public int calcularDanoInimigo(Inimigo inimigo) {
-        return this.dano + inimigo.getDano();  // Acesso através do getter
+        return this.dano + inimigo.getDano();
     }
 
     // Getters
