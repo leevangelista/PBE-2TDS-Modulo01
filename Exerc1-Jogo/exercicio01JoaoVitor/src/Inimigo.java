@@ -1,8 +1,8 @@
 public class Inimigo {
     private int id;
     private String nome;
-    private int hp;
-    private int dano;
+    int hp;
+    int dano;
 
     public Inimigo(int id, String nome, int hp, int dano) {
         this.id = id;
