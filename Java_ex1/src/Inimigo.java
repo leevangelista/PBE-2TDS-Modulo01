@@ -38,3 +38,4 @@ public class Inimigo {
         return dano;
     }
 }
+
