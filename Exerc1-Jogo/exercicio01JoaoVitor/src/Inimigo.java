@@ -43,17 +43,25 @@ public class Inimigo {
         this.dano = dano;
     }
 
-
-    public void atacar(){//instanciar personagem e ataque
-
+    public void atacar(Personagem personagem, int ataque) {
+        int danoFinal = calcularDanoInimigo(ataque);
+        personagem.receberDano(danoFinal);
     }
 
-    public void receberDano(){
-
+    private int calcularDanoInimigo(int ataque) {
+        return ataque * dano;
     }
 
-
+    public void receber_dano(int danoRecebido) {
+        this.hp -= danoRecebido;
+        if (this.hp < 0) {
+            this.hp = 0;
+        }
+    }
 }
+
+
+
 
 
 
