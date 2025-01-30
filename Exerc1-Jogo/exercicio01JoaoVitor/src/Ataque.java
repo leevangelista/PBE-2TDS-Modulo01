@@ -8,11 +8,12 @@ public class Ataque {
         this.tipo = tipo;
     }
 
-    public int calcularDanoInimigo() {
+    public int calcularDanoInimigo(Inimigo inimigo) {
+
         return this.dano;
     }
 
-    public int calcularDanoPersonagem() {
+    public int calcularDanoPersonagem(Personagem personagem) {
         if (this.tipo.equals("fisico")) {
             return this.dano * personagem.forca;
         } else if (this.tipo.equals("magico")) {
