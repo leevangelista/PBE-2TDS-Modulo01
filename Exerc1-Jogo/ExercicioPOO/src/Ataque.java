@@ -12,19 +12,23 @@ public class Ataque {
         this.dano = dano;
     }
 
-    public void calcularDanoPersonagem(Personagem personagem) {
+    public int calcularDanoPersonagem(Personagem personagem) {
         if(tipo.equals("fisico")) {
             int danoFinal = dano * personagem.getForca();
             System.out.println("Dano causado ao personagem: " + danoFinal);
+            return danoFinal;
         }
         else if(tipo.equals("magico")) {
             int danoFinal = dano * personagem.getInteligencia();
             System.out.println("Dano causado ao personagem: " + danoFinal);
+            return  danoFinal;
         }
+            return 0;
     }
 
-    public void calcularDanoInimigo(Inimigo inimigo) {
+    public int calcularDanoInimigo(Inimigo inimigo) {
         int danoInimigoFinal = (int) (inimigo.getDano() + dano);
         System.out.println("Dano causado ao inimigo: " + danoInimigoFinal);
+        return danoInimigoFinal;
     }
 }
