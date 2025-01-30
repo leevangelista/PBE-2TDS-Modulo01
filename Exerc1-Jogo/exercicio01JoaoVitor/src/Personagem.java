@@ -55,6 +55,6 @@ public class Personagem {
         System.out.println("O personagem está com " +hp+ " pontos de HP" );
     }
     public void Atacar (Inimigo inimigo, Ataque ataque) {
-        inimigo.hp = inimigo.hp - ataque.calcularDanoPersonagem();
+        inimigo.hp = inimigo.hp - ataque.calcularDanoPersonagem(this);
     }
 }
