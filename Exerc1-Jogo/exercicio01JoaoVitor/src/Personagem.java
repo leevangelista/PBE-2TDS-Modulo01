@@ -3,8 +3,8 @@ public class Personagem {
     private int id;
     private String nome;
     private float hp;
-    private int forca;
-    private int inteligencia;
+    int forca;
+    int inteligencia;
 
     Personagem (){
     }
@@ -54,7 +54,7 @@ public class Personagem {
         this.hp = hp - dano;
         System.out.println("O personagem está com " +hp+ " pontos de HP" );
     }
-    public void Atacar (inimigo inimigo, ataque ataque) {
-        inimigo.setHp = inimigo.hp - ataque.calcularDanoPersogem;
+    public void Atacar (Inimigo inimigo, Ataque ataque) {
+        inimigo.hp = inimigo.hp - ataque.calcularDanoPersonagem();
     }
 }
