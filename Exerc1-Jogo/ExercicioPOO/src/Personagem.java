@@ -1,10 +1,9 @@
 public class Personagem {
     int id;
     String nome;
-    float hp;
+    int hp;
     int forca;
     int inteligencia;
-
 
     Personagem(){};
     Personagem(int id, String nome, int hp, int forca, int inteligencia){
@@ -15,15 +14,19 @@ public class Personagem {
         this.inteligencia = inteligencia;
     };
 
-    void atacar(inim)
+    public void atacar(Inimigo inimigo, Ataque ataque){
+        int dano = ataque.calcularDanoPersonagem(this);
+        inimigo.receberDano(dano);
+        System.out.println(nome + " ataca " + inimigo.getNome() + " com " + ataque.id + " e causa " + dano + " de dano.");
+    }
 
-    void receber_dano(float hp, float dano, String nome){
-        hp = hp - dano;
+    public void receberDano(int dano){
+        this.hp -= dano;
         if (hp <= 0) {
             System.out.println(nome + " Morreu :(");
         }
+        System.out.println(nome + " recebeu " + dano + " de dano. Vida restante: " + this.hp);
     }
-
 
     //getset
     public int getId() {
@@ -42,11 +45,11 @@ public class Personagem {
         this.nome = nome;
     }
 
-    public int getHp() {
+    public float getHp() {
         return hp;
     }
 
-    public void setHp(float hp) {
+    public void setHp(int hp) {
         this.hp = hp;
     }
 
