@@ -27,16 +27,19 @@ public class Ataque {
         this.tipo = tipo;
     }
 
-    public void calcularDanoPersonagem(int forca) {
-        if (tipo == fisico) {
-            calcularDanoPersonagem = dano * forca;
-        }else{
-            calcularDanoPersonagem = dano * mp;
-            }
-
+    public int calcularDanoPersonagem(int forca, int inteligencia) {
+        int calcularTipoDano;
+        if (tipo == "fisico") {
+            calcularTipoDano = dano * forca;
+        } else {
+            calcularTipoDano = dano * inteligencia;
         }
-
-    public void calcularDanoInimigo(inimigo){
-
+        return calcularTipoDano;
     }
+
+    public int calcularDanoInimigo(int danoDoInimigo){
+        return danoDoInimigo += dano;
+    }
+
 }
+
