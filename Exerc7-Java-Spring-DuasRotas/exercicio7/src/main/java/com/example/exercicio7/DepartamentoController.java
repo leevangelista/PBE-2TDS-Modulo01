@@ -17,7 +17,7 @@ public class DepartamentoController {
         return departamentos;
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public  Departamento getDepartamentoById(@PathVariable int id){
         return departamentos.stream()
                 .filter(departamento -> departamento.getId() == id)
@@ -31,7 +31,7 @@ public class DepartamentoController {
         return newDepartamento;
    }
 
-   @PutMapping("/id")
+   @PutMapping("/{id}")
     public Departamento atualizarDepartamento(@PathVariable int id, @RequestBody Departamento putDepartamento){
        Departamento depart = departamentos.stream()
                .filter(departamento -> departamento.getId() == id)
