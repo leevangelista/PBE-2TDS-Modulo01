@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/funcionario")
 public class UserController {
     private List<Funcionario> funcionarios = new ArrayList<>();
     @PostMapping
