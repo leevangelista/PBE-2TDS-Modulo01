@@ -1,5 +1,6 @@
 package com.example.Exerc7_JavaSpring;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class FuncController {
     }
 
     @GetMapping("/{id}")
-    // @Operation(description = "Retorna o funcionário com base no id")
+    @Operation(description = "Retorna o funcionário com base no id")
     public  Funcionario getFuncByID(@PathVariable int id) {
         return funcionarios.stream()
                 .filter(funcionario -> funcionario.getId() == id)
