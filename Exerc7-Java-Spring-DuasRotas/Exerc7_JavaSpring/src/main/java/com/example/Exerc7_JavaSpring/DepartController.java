@@ -28,15 +28,19 @@ public class DepartController {
     }
 
     @PutMapping("/{id}")
-    public  Departamento updateDepart(@PathVariable int id, @RequestBody Departamento depart) {
+    public  Boolean updateDepart(@PathVariable int id, @RequestBody Departamento depart) {
         Departamento updateDepart = departamentos.stream()
                 .filter(departamento -> departamento.getIdDepartamento() == id)
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Departamento não encontrado."));
 
+        if (updateDepart == null) {
+            return false;
+        }
+
         updateDepart.setNomeDepartamento(depart.getNomeDepartamento());
 
-        return updateDepart;
+        return true;
     }
 
     @PostMapping
