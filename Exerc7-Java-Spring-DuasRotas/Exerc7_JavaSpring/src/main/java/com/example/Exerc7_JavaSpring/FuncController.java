@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/funcionarios")
 
-public class Controller {
+public class FuncController {
 
     private List<Funcionario> funcionarios = new ArrayList<>();
 
@@ -38,5 +38,11 @@ public class Controller {
         updateFunc.setIdDepartamento(func.getIdDepartamento());
 
         return updateFunc;
+    }
+
+    @PostMapping
+    public Funcionario createFunc(@RequestBody Funcionario newFunc) {
+        funcionarios.add(newFunc);
+        return  newFunc;
     }
 }
