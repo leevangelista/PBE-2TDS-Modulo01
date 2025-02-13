@@ -2,18 +2,18 @@ package com.example.problema;
 
 public class Departamento {
 
-    private int id;
+    private long id;
     private String nome;
 
-    public Departamento(int id, String nome) {
+    public Departamento(long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

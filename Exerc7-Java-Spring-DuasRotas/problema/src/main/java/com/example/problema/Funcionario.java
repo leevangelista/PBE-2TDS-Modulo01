@@ -1,11 +1,11 @@
 package com.example.problema;
 
 public class Funcionario extends Departamento {
-    private int id;
+    private long id;
     private String nome;
     Departamento departamento;
 
-    public Funcionario(int id, String nome, int id1, String nome1, Departamento departamento) {
+    public Funcionario(long id, String nome, long id1, String nome1, Departamento departamento) {
         super(id, nome);
         this.id = id1;
         this.nome = nome1;
@@ -13,12 +13,12 @@ public class Funcionario extends Departamento {
     }
 
     @Override
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
