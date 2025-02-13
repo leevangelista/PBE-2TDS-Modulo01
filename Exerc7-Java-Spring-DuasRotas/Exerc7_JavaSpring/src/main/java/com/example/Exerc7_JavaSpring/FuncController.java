@@ -35,8 +35,7 @@ public class FuncController {
                 .orElseThrow(() -> new RuntimeException("Funcionário não encontrado."));
 
         updateFunc.setNome(func.getNome());
-        updateFunc.setNomeDepartamento(func.getNomeDepartamento());
-        updateFunc.setIdDepartamento(func.getIdDepartamento());
+        updateFunc.setDepartamento(func.getDepartamento());
 
         return updateFunc;
     }
