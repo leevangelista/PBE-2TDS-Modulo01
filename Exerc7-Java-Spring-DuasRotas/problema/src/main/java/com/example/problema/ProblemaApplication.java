@@ -1,4 +1,4 @@
-git package com.example.problema;
+package com.example.problema;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -19,7 +19,7 @@ public class DepartamentoController {
         return deps.stream()
                 .filter(departamento -> departamento.getId() == id)
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("usuário não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Departamento não encontrado"));
     }
     @GetMapping
     public List<Departamento> getDepartamento(){
@@ -31,7 +31,7 @@ public class DepartamentoController {
         Departamento updateDepartamento = deps.stream()
                 .filter(dep -> dep.getId() == id)
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Departamento não encontrado"));
         updateDepartamento.setNome(departamento.getNome());
         return updateDepartamento;
     }
