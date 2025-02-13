@@ -37,7 +37,7 @@ public class FuncionarioController {
                 .filter( f -> f.getId() == id)
                 .findFirst()
                 .orElse(null);
-        return null;
+        
     }
 
 
