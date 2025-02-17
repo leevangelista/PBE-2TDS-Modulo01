@@ -25,6 +25,14 @@
         - retorna um JSON com os dados do funcionário/departamento encontrado
     - Adicionar (POST)
     - Atualizar (PUT)
+    - **Bonus**
+        - Remover(DELETE)
 
+## Requisitos
+    - Cadastrar um Funcionário.
+    - Alterar o valor do curso deste funcionário.
+    - Alterar o Departamento.
+    - Não se pode deixar alterar o id do funcionário.
+    - Não se pode deixar alterar o valor do salário.
 ## Observação
     - Não vamos nos preocupar com o relacionamento entre as classes departamento e funcionário, devido a não estarmos utilizando um banco de dados, mas assim salvando em ArrayList
