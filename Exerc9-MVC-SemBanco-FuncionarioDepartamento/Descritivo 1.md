@@ -27,6 +27,9 @@
     - Atualizar (PUT)
     - **Bonus**
         - Remover(DELETE)
+        - Rota GET que busca todos os funcionários com base no Curso ( /funcionarios?curso=nome do curso )
+        - Rota GET que busca todos os funcionários com base no departamento ( /funcionarios?departamento= nome do departamento )
+        - Rota GET que busca todos os funcionários ordenando com base no maior salário para o menor salário ( /funcionarios?ordenar=salario )
 
 ## Requisitos
     - Cadastrar um Funcionário.
