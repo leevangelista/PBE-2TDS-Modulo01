@@ -26,6 +26,22 @@ public class EmployeeBD {
                 .orElse(null);
     }
 
+    // Busca de acordo com curso
+    public Employee getByCurso(String curso) {
+        return employees.stream()
+                .filter(employee -> employee.getCurso().equals(curso))
+                .findFirst()
+                .orElse(null);
+    }
+
+    // Busca de acordo com departamento
+    public Employee getByDepartamento(String nome) {
+        return employees.stream()
+                .filter(employee -> employee.getDepartment().getNome().equals(nome))
+                .findFirst()
+                .orElse(null);
+    }
+
     // Inserir empregado
     public boolean insert(Employee employee) {
         employees.add(employee);
