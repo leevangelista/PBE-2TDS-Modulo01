@@ -45,4 +45,17 @@ public class DepartamentoBd {
         departamentoBd.setNome(departamento.getNome());
         return true;
     }
+
+    //remover departamento
+    public boolean delete(Long id, Departamento departamento){
+        Departamento departamentoBd = departamentos.stream()
+                .filter(d -> d.getId() == id)
+                .findFirst()
+                .orElse(null);
+        if (departamentoBd == null) {
+            return false;
+        }
+        departamentos.remove(departamentoBd);
+        return true;
+    }
 }

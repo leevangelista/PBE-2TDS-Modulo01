@@ -31,4 +31,13 @@ public class FuncionarioController {
         }
         return null;
     }
+
+    public Funcionario delete(Long id, Funcionario funcionario){
+        boolean result = repository.delete(id, funcionario);
+
+        if(result) {
+            return funcionario;
+        }
+        return null;
+    }
 }

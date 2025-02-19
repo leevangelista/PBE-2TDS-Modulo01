@@ -24,7 +24,7 @@ public class DepartamentoView {
         return departamentoController.getById(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Departamento update(@RequestBody Departamento departamento, @PathVariable Long id){
         return departamentoController.update(id, departamento);
     }
@@ -32,6 +32,11 @@ public class DepartamentoView {
     @PostMapping
     public boolean insert (@RequestBody Departamento departamento){
         return departamentoController.insert(departamento);
+    }
+
+    @DeleteMapping("/{id}")
+    public Departamento delete(@RequestBody Departamento departamento, @PathVariable Long id){
+        return departamentoController.delete(id, departamento);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.ex9.banco;
 
+import com.example.ex9.model.Departamento;
 import com.example.ex9.model.Funcionario;
 
 import java.util.ArrayList;
@@ -48,6 +49,18 @@ public class FuncionarioBd {
         funcionarioBd.setDepartamento(funcionario.getDepartamento());
         funcionarioBd.setSalario(funcionario.getSalario());
 
+        return true;
+    }
+
+    public boolean delete(Long id, Funcionario funcionario){
+        Funcionario funcionarioBd = funcionarios.stream()
+                .filter(f -> f.getId() == id)
+                .findFirst()
+                .orElse(null);
+        if (funcionarioBd == null) {
+            return false;
+        }
+        funcionarios.remove(funcionarioBd);
         return true;
     }
 }

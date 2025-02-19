@@ -23,7 +23,7 @@ public class FuncionarioView {
         return funcionarioController.getById(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Funcionario update(@RequestBody Funcionario funcionario, @PathVariable Long id){
         return funcionarioController.update(id, funcionario);
     }
@@ -31,5 +31,10 @@ public class FuncionarioView {
     @PostMapping
     public boolean insert (@RequestBody Funcionario funcionario){
         return funcionarioController.insert(funcionario);
+    }
+
+    @DeleteMapping("/{id}")
+    public Funcionario delete(@RequestBody Funcionario funcionario, @PathVariable Long id){
+        return funcionarioController.delete(id, funcionario);
     }
 }
