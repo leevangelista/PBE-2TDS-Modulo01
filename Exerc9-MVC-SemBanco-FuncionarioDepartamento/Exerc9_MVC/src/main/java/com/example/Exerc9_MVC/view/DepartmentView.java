@@ -32,4 +32,9 @@ public class DepartmentView {
     public Department update(@RequestBody Department department, @PathVariable Long id) { // Update departamento
         return departmentController.update(id, department);
     }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id) { // Delete departamento
+        return departmentController.delete(id);
+    }
 }
