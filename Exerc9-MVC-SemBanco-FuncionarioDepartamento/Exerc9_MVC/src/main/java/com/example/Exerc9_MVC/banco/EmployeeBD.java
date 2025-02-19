@@ -53,7 +53,7 @@ public class EmployeeBD {
     }
 
     // Delete empregado
-    public boolean update(Long id) {
+    public boolean delete(Long id) {
         Employee employeeBD = employees.stream()
                 .filter(employeeFilter -> employeeFilter.getId() == id)
                 .findFirst()
