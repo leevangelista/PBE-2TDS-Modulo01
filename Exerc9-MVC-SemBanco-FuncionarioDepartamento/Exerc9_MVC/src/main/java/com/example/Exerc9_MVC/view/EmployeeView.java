@@ -33,6 +33,11 @@ public class EmployeeView {
         return employeeController.getByDepartamento(nome);
     }
 
+    @GetMapping("/salarioOrdenado")
+    public List<Employee> getBySalarioOrdenado() {
+        return employeeController.getSalarioOrdenado();
+    }
+
     @PostMapping
     public boolean insert(@RequestBody Employee employee) { // Criando empregado
         return employeeController.insert(employee);
