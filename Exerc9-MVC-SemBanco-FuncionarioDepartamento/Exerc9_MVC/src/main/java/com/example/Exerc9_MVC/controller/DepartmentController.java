@@ -34,4 +34,11 @@ public class DepartmentController {
 
         return null;
     }
+
+    // Delete departamento
+    public boolean delete(Long id) {
+        boolean result = repositoryDP.delete(id);
+
+        return result;
+    }
 }
