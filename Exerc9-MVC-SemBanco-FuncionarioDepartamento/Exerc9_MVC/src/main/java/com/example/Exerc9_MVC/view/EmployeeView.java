@@ -23,6 +23,16 @@ public class EmployeeView {
         return employeeController.getById(id);
     }
 
+    @GetMapping("/curso")
+    public Employee getByCurso(@RequestParam String curso) { // Busca por curso
+        return employeeController.getByCurso(curso);
+    }
+
+    @GetMapping("/departamento")
+    public Employee getByDepartamento(@RequestParam String nome) {
+        return employeeController.getByDepartamento(nome);
+    }
+
     @PostMapping
     public boolean insert(@RequestBody Employee employee) { // Criando empregado
         return employeeController.insert(employee);
