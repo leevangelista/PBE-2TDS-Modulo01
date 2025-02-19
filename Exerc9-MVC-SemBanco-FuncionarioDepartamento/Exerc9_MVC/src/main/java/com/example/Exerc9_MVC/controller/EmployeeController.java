@@ -37,8 +37,6 @@ public class EmployeeController {
 
     // Delete empregado
     public boolean delete(Long id) {
-        boolean result = repositoryEP.delete(id);
-
-        return result;
+        return repositoryEP.delete(id);
     }
 }
