@@ -3,7 +3,9 @@ package com.example.Exerc9_MVC.banco;
 import com.example.Exerc9_MVC.model.Employee;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeBD {
 
@@ -40,6 +42,13 @@ public class EmployeeBD {
                 .filter(employee -> employee.getDepartment().getNome().equals(nome))
                 .findFirst()
                 .orElse(null);
+    }
+
+    // Ordenado Salario
+    public List<Employee> getBySalarioOrdenado() {
+        return employees.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalario).reversed())
+                .collect(Collectors.toList());
     }
 
     // Inserir empregado
