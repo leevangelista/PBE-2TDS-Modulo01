@@ -29,6 +29,11 @@ public class EmployeeController {
         return repositoryEP.getByDepartamento(nome);
     }
 
+    // Ordernar por salario
+    public List<Employee> getBySalarioOrdenado() {
+        return repositoryEP.getBySalarioOrdenado();
+    }
+
     // Inserir empregado
     public boolean insert(Employee employee) {
         return repositoryEP.insert(employee);
