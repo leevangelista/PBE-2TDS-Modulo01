@@ -51,4 +51,18 @@ public class EmployeeBD {
 
         return true;
     }
+
+    // Delete empregado
+    public boolean update(Long id) {
+        Employee employeeBD = employees.stream()
+                .filter(employeeFilter -> employeeFilter.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if (employeeBD == null) {
+            return false;
+        }
+        employees.remove(employeeBD);
+        return true;
+    }
 }
