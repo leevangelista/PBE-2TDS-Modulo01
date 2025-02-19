@@ -34,4 +34,11 @@ public class EmployeeController {
 
         return null;
     }
+
+    // Delete empregado
+    public boolean delete(Long id) {
+        boolean result = repositoryEP.delete(id);
+
+        return result;
+    }
 }
