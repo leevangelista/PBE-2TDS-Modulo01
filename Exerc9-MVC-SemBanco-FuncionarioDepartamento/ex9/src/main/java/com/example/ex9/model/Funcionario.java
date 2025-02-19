@@ -1,4 +1,6 @@
-package com.example.ex9;
+package com.example.ex9.model;
+
+import com.example.ex9.model.Departamento;
 
 public class Funcionario {
 

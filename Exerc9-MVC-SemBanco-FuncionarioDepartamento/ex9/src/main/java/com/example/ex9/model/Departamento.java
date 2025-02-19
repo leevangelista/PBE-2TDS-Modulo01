@@ -1,4 +1,4 @@
-package com.example.ex9;
+package com.example.ex9.model;
 
 public class Departamento {
 
