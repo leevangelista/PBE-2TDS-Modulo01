@@ -32,4 +32,9 @@ public class EmployeeView {
     public Employee update(@RequestBody Employee employee, @PathVariable Long id) { // Update empregado
         return employeeController.update(id, employee);
     }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id) { // Delete empregado
+        return employeeController.delete(id);
+    }
 }
