@@ -40,4 +40,11 @@ public class FuncionarioController {
         }
         return null;
     }
+
+    public List<Funcionario> getByCurso(String curso){
+        return (List<Funcionario>) repository.getByCurso(curso);
+    }
+    public Funcionario getByDepartamento(Departamento departamento){
+        return repository.getByDepartamento(departamento);
+    }
 }

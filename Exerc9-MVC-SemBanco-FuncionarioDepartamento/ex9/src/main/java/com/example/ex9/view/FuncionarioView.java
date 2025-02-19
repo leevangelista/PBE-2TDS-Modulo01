@@ -2,6 +2,7 @@ package com.example.ex9.view;
 
 
 import com.example.ex9.controller.FuncionarioController;
+import com.example.ex9.model.Departamento;
 import com.example.ex9.model.Funcionario;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,4 +38,14 @@ public class FuncionarioView {
     public Funcionario delete(@RequestBody Funcionario funcionario, @PathVariable Long id){
         return funcionarioController.delete(id, funcionario);
     }
+
+    @GetMapping("/curso")
+    public Funcionario getByCurso(@RequestParam String curso){
+        return funcionarioController.getByCurso(curso);
+    }
+    @GetMapping("/departamento ")
+  public Funcionario getByDepartamento(@RequestParam Departamento departamento){
+     return funcionarioController.getByDepartamento(departamento);
+   }
+
 }

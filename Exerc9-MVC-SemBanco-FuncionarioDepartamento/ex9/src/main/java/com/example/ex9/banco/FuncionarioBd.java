@@ -63,4 +63,17 @@ public class FuncionarioBd {
         funcionarios.remove(funcionarioBd);
         return true;
     }
+
+    //buscar todos pelo curso
+    public <List>FuncionarioBd getByCurso(String curso){
+        return funcionarios.stream()
+                .filter( fun -> fun.getCurso().equals(curso);
+    }
+
+    public Funcionario getByDepartamento(Departamento departamento){
+        return funcionarios.stream()
+                .filter( fun -> fun.getDepartamento().equals(departamento))
+                .findFirst()
+                .orElse(null);
+    }
 }
