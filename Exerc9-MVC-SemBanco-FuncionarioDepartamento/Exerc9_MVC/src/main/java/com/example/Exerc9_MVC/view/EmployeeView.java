@@ -35,7 +35,7 @@ public class EmployeeView {
 
     @GetMapping("/salarioOrdenado")
     public List<Employee> getBySalarioOrdenado() {
-        return employeeController.getSalarioOrdenado();
+        return employeeController.getBySalarioOrdenado();
     }
 
     @PostMapping
