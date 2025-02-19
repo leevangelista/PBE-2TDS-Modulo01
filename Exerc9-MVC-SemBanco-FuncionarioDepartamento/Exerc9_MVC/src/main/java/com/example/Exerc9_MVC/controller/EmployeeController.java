@@ -19,6 +19,16 @@ public class EmployeeController {
         return repositoryEP.getByID(id);
     }
 
+    // Buscar por curso
+    public Employee getByCurso(String curso) {
+        return repositoryEP.getByCurso(curso);
+    }
+
+    // Buscar por departamento
+    public Employee getByDepartamento(String nome) {
+        return repositoryEP.getByDepartamento(nome);
+    }
+
     // Inserir empregado
     public boolean insert(Employee employee) {
         return repositoryEP.insert(employee);
