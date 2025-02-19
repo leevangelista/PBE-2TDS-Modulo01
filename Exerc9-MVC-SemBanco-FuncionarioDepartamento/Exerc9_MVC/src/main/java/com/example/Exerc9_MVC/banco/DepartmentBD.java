@@ -47,4 +47,19 @@ public class DepartmentBD {
 
         return true;
     }
+
+    // Delete Department
+    public boolean delete(Long id) {
+        Department departmentBD = departments.stream()
+                .filter(departmentFilter -> departmentFilter.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if (departmentBD == null) {
+            return false;
+        }
+        departments.remove(departmentBD);
+
+        return true;
+    }
 }
