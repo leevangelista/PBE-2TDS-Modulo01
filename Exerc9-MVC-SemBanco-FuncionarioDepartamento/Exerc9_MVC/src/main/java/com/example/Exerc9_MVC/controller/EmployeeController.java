@@ -20,12 +20,12 @@ public class EmployeeController {
     }
 
     // Buscar por curso
-    public Employee getByCurso(String curso) {
+    public List<Employee> getByCurso(String curso) {
         return repositoryEP.getByCurso(curso);
     }
 
     // Buscar por departamento
-    public Employee getByDepartamento(String nome) {
+    public List<Employee> getByDepartamento(String nome) {
         return repositoryEP.getByDepartamento(nome);
     }
 
