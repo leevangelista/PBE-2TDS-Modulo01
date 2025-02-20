@@ -19,6 +19,10 @@ public class FuncionarioController {
         return funcRepository.findByCurso(curso);
     }
 
+    public List<Funcionario> funcionariosOrdenados(double salario){
+        return funcRepository.funcionariosOrdenados();
+    }
+
     public List<Funcionario> getByDepartamento(String nomeDepartamento){
         return funcRepository.findByDepartamento(nomeDepartamento);
     }

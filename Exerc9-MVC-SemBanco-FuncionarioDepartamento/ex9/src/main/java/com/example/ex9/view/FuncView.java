@@ -15,12 +15,15 @@ public class FuncView {
     @GetMapping
     public List<Funcionario> getAll(
             @RequestParam (required = false) String curso,
-            @RequestParam (required = false) String nomeDepartamento
+            @RequestParam (required = false) String nomeDepartamento,
+            @RequestParam (required = false) Double funcionariosOrdenados
     ) {
         if (curso != null) {
             return funcionarioController.getByCurso(curso);
-        } else if (nomeDepartamento != null){
+        } else if (nomeDepartamento != null) {
             return funcionarioController.getByDepartamento(nomeDepartamento);
+        }else if(funcionariosOrdenados != null){
+            return funcionarioController.funcionariosOrdenados(funcionariosOrdenados);
         }else{
 
             return funcionarioController.getAll();

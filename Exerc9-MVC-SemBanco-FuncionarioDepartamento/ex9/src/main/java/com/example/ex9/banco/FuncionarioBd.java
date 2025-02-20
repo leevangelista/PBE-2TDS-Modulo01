@@ -4,6 +4,7 @@ import com.example.ex9.model.Departamento;
 import com.example.ex9.model.Funcionario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class FuncionarioBd {
@@ -80,5 +81,21 @@ public class FuncionarioBd {
         funcionarios.remove(f);
         return true;
     }
+
+
+    //ORDENAR POR SALARIO
+   // public  List<Funcionario> funcionariosOrdenados(){
+      //  return funcionarios.stream()
+     //           .sorted((func1, func2) -> Double.compare(func2.getSalario(), func1.getSalario()))
+     //           .toList();
+
+   // }
+    //SEGUNDA OPCAO
+    public List<Funcionario> funcionariosOrdenados(){
+        return funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getSalario).reversed())
+                .toList();
+    }
+
 
 }
