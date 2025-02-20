@@ -29,19 +29,17 @@ public class EmployeeBD {
     }
 
     // Busca de acordo com curso
-    public Employee getByCurso(String curso) {
+    public List<Employee> getByCurso(String curso) {
         return employees.stream()
                 .filter(employee -> employee.getCurso().equals(curso))
-                .findFirst()
-                .orElse(null);
+                .toList();
     }
 
     // Busca de acordo com departamento
-    public Employee getByDepartamento(String nome) {
+    public List<Employee> getByDepartamento(String nome) {
         return employees.stream()
                 .filter(employee -> employee.getDepartment().getNome().equals(nome))
-                .findFirst()
-                .orElse(null);
+                .toList();
     }
 
     // Ordenado Salario
