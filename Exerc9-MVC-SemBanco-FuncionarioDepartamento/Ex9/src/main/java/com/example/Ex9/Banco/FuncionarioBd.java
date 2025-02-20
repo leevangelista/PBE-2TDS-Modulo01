@@ -28,18 +28,16 @@ public class FuncionarioBd {
                 .orElse(null);
     }
 
-    public Funcionario getByCurso(String curso) {
-        return funcionarios.stream()
+    public List<Funcionario> getByCurso(String curso) {
+        return  funcionarios.stream()
                 .filter(f -> f.getCurso().equals(curso))
-                .findFirst()
-                .orElse(null);
+                .toList();
     }
 
-    public Funcionario getByDepartamento(String nome) {
+    public List<Funcionario> getByDepartamento(String nome) {
         return funcionarios.stream()
                 .filter(f -> f.getDepartamento().getNome().equals(nome))
-                .findFirst()
-                .orElse(null);
+                .toList();
     }
 
     //insere um funcionario

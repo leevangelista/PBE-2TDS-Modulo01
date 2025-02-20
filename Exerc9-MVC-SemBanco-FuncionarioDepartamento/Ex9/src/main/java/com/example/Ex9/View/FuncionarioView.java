@@ -15,7 +15,15 @@ public class FuncionarioView {
 
     @GetMapping
     @Description("Retorna todos os funcionários")
-    public List<Funcionario> getAll() {
+    public List<Funcionario> getAll(
+            @RequestParam(required = false) String curso,
+            @RequestParam(required = false) String nomeDepartamento
+    ) {
+        if(curso != null){
+            return funcionarioController.getByCurso(curso);
+        } else if (nomeDepartamento != null) {
+            return funcionarioController.getByDepartamento(nomeDepartamento);
+        }
         return funcionarioController.getAll();
     }
 
@@ -23,12 +31,6 @@ public class FuncionarioView {
     public Funcionario getById(@PathVariable Long id) {
         return funcionarioController.getById(id);
     }
-
-    @GetMapping("/curso")
-    public Funcionario getByCurso(@RequestParam String curso) { return funcionarioController.getByCurso(curso); }
-
-    @GetMapping("/departamento")
-    public Funcionario getByDepartamento(@RequestParam String nome) { return funcionarioController.getByDepartamento(nome); }
 
     @GetMapping("/salarioOrdenado")
     public List<Funcionario> getFuncionariosOrdenadosPorSalario() { return funcionarioController.getFuncionarioOrdenadoPorSalario(); }

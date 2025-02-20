@@ -18,9 +18,9 @@ public class FuncionarioController {
         return repositorio.getById(id);
     }
 
-    public Funcionario getByCurso(String curso) { return repositorio.getByCurso(curso); }
+    public List<Funcionario> getByCurso(String curso) { return repositorio.getByCurso(curso); }
 
-    public Funcionario getByDepartamento(String nome) { return repositorio.getByDepartamento(nome); }
+    public List<Funcionario> getByDepartamento(String nome) { return repositorio.getByDepartamento(nome); }
 
     public List<Funcionario> getFuncionarioOrdenadoPorSalario() { return repositorio.getFuncionariosOrdenadosPorSalario(); }
 
