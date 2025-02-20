@@ -14,23 +14,23 @@ public class EmployeeView {
     EmployeeController employeeController = new EmployeeController();
 
     @GetMapping
-    public List<Employee> getAll() { // Buscando por todos empregados
-        return employeeController.getAll();
+    public List<Employee> getAll(
+            @RequestParam(required = false) String curso, // Filtro de curso
+            @RequestParam(required = false) String nomeDepartamento // Filtro de departamento
+    ) {
+        // Verificações para busca
+        if (curso != null) {
+            return employeeController.getByCurso(curso); // Filtro de curso
+        } else if (nomeDepartamento != null) {
+            return employeeController.getByDepartamento(nomeDepartamento); // Filtro de departamento
+        } else {
+            return employeeController.getAll(); // Buscando por todos empregados
+        }
     }
 
     @GetMapping("/{id}")
     public Employee getById(@PathVariable Long id) { // Buscando por id
         return employeeController.getById(id);
-    }
-
-    @GetMapping("/curso")
-    public Employee getByCurso(@RequestParam String curso) { // Busca por curso
-        return employeeController.getByCurso(curso);
-    }
-
-    @GetMapping("/departamento")
-    public Employee getByDepartamento(@RequestParam String nome) {
-        return employeeController.getByDepartamento(nome);
     }
 
     @GetMapping("/salarioOrdenado")
