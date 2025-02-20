@@ -8,8 +8,6 @@ import java.util.List;
 
 
 public class FuncionarioController {
-
-    //buscar todos
     FuncionarioBd repository = new FuncionarioBd();
     public List<Funcionario> getAll() {
         return repository.findAll();
@@ -17,8 +15,14 @@ public class FuncionarioController {
     public Funcionario getById(Long id){
         return repository.getById(id);
     }
-    public Funcionario getByCurso(String curso){
-        return repository.getByCurso(curso);
+    public List<Funcionario> getByCurso(String curso) {
+        return repository.findByCurso(curso);
+    }
+    public List<Funcionario> getByDepartamento(String nomeDepartamento){
+         return repository.findByDepartamento(nomeDepartamento);
+    }
+    public List<Funcionario> getBySalarios(Double salario){
+        return repository.funcionariosOrdenados(salario);
     }
 
     public boolean insert (Funcionario funcionario){

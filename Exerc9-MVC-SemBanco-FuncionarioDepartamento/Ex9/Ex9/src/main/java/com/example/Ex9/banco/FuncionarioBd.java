@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FuncionarioBd {
     private List<Funcionario> funcionarios;
@@ -13,38 +12,39 @@ public class FuncionarioBd {
     public FuncionarioBd() {
         this.funcionarios = new ArrayList<>();
     }
-
-    //buscar todos os usuarios
     public List<Funcionario> findAll(){
         return new ArrayList<>(funcionarios);
     }
-    //buscar apenas um usuario
-
     public Funcionario getById(long id){
         return funcionarios.stream()
                 .filter( fun -> fun.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
-    public Funcionario getByCurso(String curso){
-        return (Funcionario) funcionarios.stream()
-                .filter(f -> f.getCurso().equalsIgnoreCase(curso))
-                .collect(Collectors.toList());
+    public List<Funcionario> findByCurso(String curso) {
+         return funcionarios.stream()
+                .filter(objeto -> objeto.getCurso().equals(curso))
+                 .toList();
     }
-    // insert user
+    public List<Funcionario> findByDepartamento(String nomeDepartamento) {
+        return funcionarios.stream()
+                .filter(objeto -> objeto.getDepartamento().getNome().equals(nomeDepartamento))
+                .toList();
+    }
+    public List<Funcionario> funcionariosOrdenados(Double salario) {
+        return funcionarios.stream()
+                .sorted((fun1, fun2)-> Double.compare(fun2.getSalario(), fun1.getSalario()))
+                .toList();
+    }
     public boolean insert(Funcionario funcionario){
         funcionarios.add(funcionario);
         return true;
     }
-
-    //update user
     public boolean update(long id, Funcionario funcionario) {
         Funcionario funcionarioBD = funcionarios.stream()
                 .filter(objeto -> objeto.getId() == id)
                 .findFirst()
                 .orElse(null);
-
-
         if (funcionarioBD == null){
             return false;
         }
@@ -58,4 +58,6 @@ public class FuncionarioBd {
     public boolean removerFuncionario(@PathVariable Long id) {
         return funcionarios.removeIf(f -> f.getId() == (id));
     }
+
+
 }

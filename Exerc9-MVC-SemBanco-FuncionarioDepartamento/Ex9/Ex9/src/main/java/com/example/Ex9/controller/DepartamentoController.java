@@ -7,8 +7,6 @@ import java.util.List;
 
 
 public class DepartamentoController {
-
-        //buscar todos
         DepartamentoBd repository = new DepartamentoBd();
         public List<Departamento> getAll() {
             return repository.findAll();
@@ -29,5 +27,4 @@ public class DepartamentoController {
     public boolean removerDepartamento(Long id) {
         return repository.removerDepartamento(id);
     }
-
-    }
+}
