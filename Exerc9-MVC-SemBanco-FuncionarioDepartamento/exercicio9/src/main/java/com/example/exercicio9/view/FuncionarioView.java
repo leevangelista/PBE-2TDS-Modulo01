@@ -15,13 +15,16 @@ public class FuncionarioView {
     @GetMapping
     public List<Funcionario> getAll(
             @RequestParam(required = false) String curso,
-            @RequestParam(required = false) String nomeDepartamento
+            @RequestParam(required = false) String nomeDepartamento,
+            @RequestParam(required = false) double salario
     ){
         if (curso != null){
             return  funcionarioController.getByCurso(curso);
         } else if (nomeDepartamento != null) {
             return  funcionarioController.getByDepartamento(nomeDepartamento);
-        }else {
+        } else if (salario >= 0 ) {
+            return funcionarioController.getBySalario(salario);
+        } else {
             return funcionarioController.getAll();
         }
     }

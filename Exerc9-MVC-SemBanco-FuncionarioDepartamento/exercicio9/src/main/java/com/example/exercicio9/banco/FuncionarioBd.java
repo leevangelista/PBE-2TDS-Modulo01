@@ -3,6 +3,7 @@ package com.example.exercicio9.banco;
 import com.example.exercicio9.model.Funcionario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class FuncionarioBd {
@@ -23,6 +24,22 @@ public class FuncionarioBd {
                 .filter(funcionario -> funcionario.getDepartamento().getNome().equals(nomeDepartamento))
                 .toList();
     }
+
+
+   /*public List<Funcionario> funcionariosOrdenados(){
+        return funcionarios.stream()
+                .sorted((func1, func2) -> Double.compare(func2.getSalario(), func1.getSalario()))
+        .toList();
+   }*/
+
+   public List<Funcionario> funcionariosOrdenados(){
+        return funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getSalario).reversed())
+                .toList();
+   }
+
+
+
 
 
     //buscar todos os funcionarios

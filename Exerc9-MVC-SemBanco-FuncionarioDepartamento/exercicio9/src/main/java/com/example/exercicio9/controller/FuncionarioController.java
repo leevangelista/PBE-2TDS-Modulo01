@@ -21,6 +21,9 @@ public class FuncionarioController {
     public List<Funcionario> getByDepartamento(String nomeDepartamento){
         return repository.findByDepartamento(nomeDepartamento);
     }
+    public List<Funcionario> getBySalario(double salario){
+        return repository.funcionariosOrdenados();
+    }
 
     public  Funcionario getById(Long id){
 
