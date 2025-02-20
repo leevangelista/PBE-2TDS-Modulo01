@@ -45,7 +45,7 @@ public class EmployeeBD {
     // Ordenado Salario
     public List<Employee> getBySalarioOrdenado() {
         return employees.stream()
-                .sorted(Comparator.comparingDouble(Employee::getSalario).reversed())
+                .sorted(Comparator.comparing(Employee::getSalario).reversed())
                 .toList();
     }
 
