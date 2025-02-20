@@ -4,7 +4,9 @@ import com.example.ex9.model.Departamento;
 import com.example.ex9.model.Funcionario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FuncionarioBd {
 
@@ -52,7 +54,7 @@ public class FuncionarioBd {
         return true;
     }
 
-    public boolean delete(Long id, Funcionario funcionario){
+    public boolean delete(Long id){
         Funcionario funcionarioBd = funcionarios.stream()
                 .filter(f -> f.getId() == id)
                 .findFirst()
@@ -65,15 +67,29 @@ public class FuncionarioBd {
     }
 
     //buscar todos pelo curso
-    public <List>FuncionarioBd getByCurso(String curso){
+    public List<Funcionario> getByCurso(String curso) {
         return funcionarios.stream()
-                .filter( fun -> fun.getCurso().equals(curso);
+                .filter(fun -> fun.getCurso().equals(curso))
+                .toList();
     }
 
-    public Funcionario getByDepartamento(Departamento departamento){
+
+    public List<Funcionario> getByDepartamento(Departamento departamento){
         return funcionarios.stream()
                 .filter( fun -> fun.getDepartamento().equals(departamento))
-                .findFirst()
-                .orElse(null);
+                .toList();
     }
+
+    public List<Funcionario> funcionariosOrdenados(){
+        return funcionarios.stream()
+                .sorted((func1, func2) -> Double.compare(func2.getSalario(), func1.getSalario()))
+                .toList();
+    }
+
+    /*public List<Funcionario> funcionariosOrdenados(){
+        return funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getSalario).reversed())
+                .toList();
+    }*/
+
 }

@@ -15,8 +15,20 @@ public class FuncionarioView {
     FuncionarioController funcionarioController = new FuncionarioController();
 
     @GetMapping
-    public List<Funcionario> getAll(){
-        return funcionarioController.getAll();
+    public List<Funcionario> getAll(@RequestParam(required = false) String curso, @RequestParam(required = false) Departamento departamento, @RequestParam(required = false) Double salario){
+
+        if(curso != null){
+            return funcionarioController.getByCurso(curso);
+        }
+        else if(departamento != null){
+            return funcionarioController.getByDepartamento(departamento);
+        }
+        else if (salario != null) {
+            return funcionarioController.funcionariosOrdenados();
+        }
+        else {
+            return funcionarioController.getAll();
+        }
     }
 
     @GetMapping("/{id}")
@@ -39,13 +51,13 @@ public class FuncionarioView {
         return funcionarioController.delete(id, funcionario);
     }
 
-    @GetMapping("/curso")
+    /*@GetMapping("/curso")
     public Funcionario getByCurso(@RequestParam String curso){
-        return funcionarioController.getByCurso(curso);
+        return (Funcionario) funcionarioController.getByCurso(curso);
     }
     @GetMapping("/departamento ")
   public Funcionario getByDepartamento(@RequestParam Departamento departamento){
      return funcionarioController.getByDepartamento(departamento);
-   }
+   }*/
 
 }

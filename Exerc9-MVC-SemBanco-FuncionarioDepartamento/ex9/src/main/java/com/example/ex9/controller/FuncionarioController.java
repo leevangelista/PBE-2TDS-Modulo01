@@ -33,18 +33,21 @@ public class FuncionarioController {
     }
 
     public Funcionario delete(Long id, Funcionario funcionario){
-        boolean result = repository.delete(id, funcionario);
+        boolean result = repository.delete(id);
 
         if(result) {
             return funcionario;
         }
         return null;
     }
-
     public List<Funcionario> getByCurso(String curso){
-        return (List<Funcionario>) repository.getByCurso(curso);
+        return repository.getByCurso(curso);
     }
-    public Funcionario getByDepartamento(Departamento departamento){
+    public List<Funcionario> getByDepartamento(Departamento departamento){
         return repository.getByDepartamento(departamento);
+    }
+
+    public List<Funcionario> funcionariosOrdenados(){
+        return repository.funcionariosOrdenados();
     }
 }
