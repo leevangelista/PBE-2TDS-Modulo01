@@ -2,6 +2,7 @@ package com.example.ex9.view;
 
 import com.example.ex9.controller.FuncionarioController;
 import com.example.ex9.model.Funcionario;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +13,20 @@ public class FuncView {
     FuncionarioController funcionarioController = new FuncionarioController();
 
     @GetMapping
-    public List<Funcionario> getAll(){
-        return funcionarioController.getAll();
+    public List<Funcionario> getAll(
+            @RequestParam (required = false) String curso,
+            @RequestParam (required = false) String nomeDepartamento
+    ) {
+        if (curso != null) {
+            return funcionarioController.getByCurso(curso);
+        } else if (nomeDepartamento != null){
+            return funcionarioController.getByDepartamento(nomeDepartamento);
+        }else{
+
+            return funcionarioController.getAll();
+        }
     }
+
 
     @GetMapping("/{id}")
     public Funcionario getById (@PathVariable Long id){
@@ -31,5 +43,10 @@ public class FuncView {
     @PutMapping("/{id}")
     public Funcionario update(@RequestBody Funcionario funcionario, @PathVariable Long id){
         return funcionarioController.update(id, funcionario);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete (@PathVariable Long id){
+        return funcionarioController.delete(id);
     }
 }

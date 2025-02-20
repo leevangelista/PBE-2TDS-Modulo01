@@ -1,12 +1,14 @@
 package com.example.ex9.banco;
 
 import com.example.ex9.model.Departamento;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepartamentoBd {
+
 
     private List<Departamento> departamentos;
 
@@ -20,7 +22,7 @@ public class DepartamentoBd {
     //buscar unico dep
     public Departamento getById(Long id){
         return departamentos.stream()
-                .filter(func -> func.getId() == id)
+                .filter(dep -> dep.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
@@ -30,6 +32,20 @@ public class DepartamentoBd {
         departamentos.add(departamento);
         return true;
     }
+    //remover
+    public boolean delete (Long id){
+        Departamento d = departamentos.stream()
+                .filter(dBd -> dBd.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+            if(d == null){
+                return false;
+            }
+             departamentos.remove(d);
+                return true;
+    }
+
 
     // atualizar dep
     public boolean update (Long id, Departamento departamento){

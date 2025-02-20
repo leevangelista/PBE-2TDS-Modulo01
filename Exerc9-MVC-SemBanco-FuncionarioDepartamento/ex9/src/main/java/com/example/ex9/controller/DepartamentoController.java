@@ -31,5 +31,10 @@ public class DepartamentoController {
         return null;
     }
 
+    public boolean delete (Long id ) {
+        return depRepository.delete(id);
+
+    }
+
 
 }

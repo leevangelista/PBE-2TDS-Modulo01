@@ -1,5 +1,6 @@
 package com.example.ex9.banco;
 
+import com.example.ex9.model.Departamento;
 import com.example.ex9.model.Funcionario;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class FuncionarioBd {
 
     private List<Funcionario> funcionarios;
 
+
     public FuncionarioBd(){
         this.funcionarios = new ArrayList<>();
     }
@@ -16,6 +18,22 @@ public class FuncionarioBd {
     public List<Funcionario> findAll(){
         return new ArrayList<>(funcionarios);
     }
+
+    public List<Funcionario> findByCurso(String curso){
+        return funcionarios.stream()
+                .filter(funcionario -> funcionario.getCurso().equals(curso))
+                .toList();
+    }
+
+    public List<Funcionario> findByDepartamento(String nomeDepartamento){
+        return funcionarios.stream()
+                .filter(funcionario -> funcionario.getDepartamento().getNome()
+                .equals(nomeDepartamento))
+                .toList();
+
+    }
+
+
     //buscar unico funcionario
     public Funcionario getById(Long id){
         return funcionarios.stream()
@@ -48,6 +66,19 @@ public class FuncionarioBd {
 
 
             return true;
+    }
+
+    public boolean delete (Long id){
+        Funcionario f = funcionarios.stream()
+                .filter(fBd -> fBd.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if(f == null){
+            return false;
+        }
+        funcionarios.remove(f);
+        return true;
     }
 
 }
