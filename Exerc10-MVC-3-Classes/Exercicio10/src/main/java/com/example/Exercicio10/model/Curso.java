@@ -58,5 +58,7 @@ public class Curso {
     public void setProfessor(Professor professor) {
         this.professor = professor;
     }
+
+
 }
 

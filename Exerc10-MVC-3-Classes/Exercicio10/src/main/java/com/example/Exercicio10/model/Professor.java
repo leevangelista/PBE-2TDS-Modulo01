@@ -2,14 +2,14 @@ package com.example.Exercicio10.model;
 
 public class Professor {
     private Long idProfessor;
-    private String nome;
+    private String nomeProfessor;
     private String cpf;
 
     private double salario;
 
-    public Professor(Long idProfessor, String nome, String cpf, double salario) {
+    public Professor(Long idProfessor, String nomeProfessor, String cpf, double salario) {
         this.idProfessor = idProfessor;
-        this.nome = nome;
+        this.nomeProfessor = Professor.this.nomeProfessor;
         this.cpf = cpf;
         this.salario = salario;
     }
@@ -22,12 +22,12 @@ public class Professor {
         this.idProfessor = idProfessor;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeProfessor() {
+        return nomeProfessor;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeProfessor(String nomeProfessor) {
+        this.nomeProfessor = Professor.this.nomeProfessor;
     }
 
     public String getCpf() {
