@@ -46,7 +46,7 @@ public class CursoView {
 
     // esta função fatao mesmo insert que a função a cima, porém com melhores práticas de programação
     @PostMapping("/{idCurso}/alunoMelhorado")
-    public Curso insertAlunoMelhorado(@RequestBody Aluno aluno, @PathVariable int idCurso){
+    public String insertAlunoMelhorado(@RequestBody Aluno aluno, @PathVariable int idCurso){
         return cursoController.insertAlunoMelhorado(idCurso, aluno);
     }
 

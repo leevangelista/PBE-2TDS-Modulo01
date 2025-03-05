@@ -65,9 +65,9 @@ public class CursoDb {
     }
 
     // insert de aluno novo no curso, com melhores práticas de programação
-    public Curso insertAlunoMelhorado(Curso curso, Aluno aluno){
+    public boolean insertAlunoMelhorado(Curso curso, Aluno aluno){
         curso.getAlunos().add(aluno);
-        return curso;
+        return true;
     }
 
     // atualiza o funcionário com base no id
