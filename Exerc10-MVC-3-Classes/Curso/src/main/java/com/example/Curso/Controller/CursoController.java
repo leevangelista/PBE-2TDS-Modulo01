@@ -35,9 +35,16 @@ public class CursoController {
     }
 
     // esta funcao fara o mesmo insert do aluno que a funcao a cima, porém com melhores práticas de programção
-    public Curso insertAlunoMelhorado(int idCurso, Aluno aluno){
+    public String insertAlunoMelhorado(int idCurso, Aluno aluno){
         Curso curso = repository.getById(idCurso);
-        return repository.insertAlunoMelhorado(curso, aluno);
+        if(curso == null){
+            return "Curso não encontrado, para que aluno possa ser inserido!";
+        }
+        boolean result = repository.insertAlunoMelhorado(curso, aluno);
+        if(result){
+            return "Aluno inserido com sucesso";
+        }
+        return "Não foi possível inserir alunos";
     }
 
     public Curso update(int id, Curso curso){
