@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -26,10 +25,10 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(@PathVariable long id, @RequestBody User user) {
+    public ResponseEntity<Optional<User>> getById(@PathVariable long id) {
        Optional<User> userOptional = userRepository.findById(id);
         if(userOptional.isPresent()){
-            return ResponseEntity.status(HttpStatus.FOUND).body(user);
+            return ResponseEntity.status(HttpStatus.FOUND).body(userOptional);
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -60,7 +59,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll(){
+    public ResponseEntity<List<User>> getAl(){
         List<User> userList = userRepository.findAll();
         if(userList.isEmpty()){
             return ResponseEntity.status(HttpStatus.FOUND).body(userList);
