@@ -1,6 +1,8 @@
-package com.example.aula.Entity;
+package com.example.atv27_03.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -11,8 +13,7 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long idCurso;
     private String nome;
     private int numeroSala;
 
@@ -27,18 +28,18 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(Long id, String nome, int numeroSala) {
-        this.id = id;
+    public Curso(Long idCurso, String nome, int numeroSala) {
+        this.idCurso = idCurso;
         this.nome = nome;
         this.numeroSala = numeroSala;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdCurso() {
+        return idCurso;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdCurso(Long idCurso) {
+        this.idCurso = idCurso;
     }
 
     public String getNome() {
@@ -63,5 +64,13 @@ public class Curso {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 }

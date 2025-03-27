@@ -1,38 +1,33 @@
-package com.example.atv27_03.Entity;
+package com.example.atv27_03.DTO;
 
+import com.example.atv27_03.Entity.Curso;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 
-@Entity
-public class Aluno {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAluno;
+public class AlunoDTO {
+    private long id;
     private String nome;
     private String cpf;
-
-    @ManyToOne
-    @JoinColumn(name = "idCurso", referencedColumnName = "idCurso")
     @JsonIgnoreProperties("alunos")
     private Curso curso;
 
-    public Aluno() {
+    public AlunoDTO(){
+
     }
 
-    public Aluno(String cpf, String nome, Long idAluno) {
-        this.cpf = cpf;
+    public AlunoDTO(long id, String nome, String cpf, Curso curso) {
+        this.id = id;
         this.nome = nome;
-        this.idAluno = idAluno;
+        this.cpf = cpf;
+        this.curso = curso;
     }
 
-    public Long getIdAluno() {
-        return idAluno;
+    public long getId() {
+        return id;
     }
 
-    public void setIdAluno(Long idAluno) {
-        this.idAluno = idAluno;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -58,5 +53,4 @@ public class Aluno {
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
-
 }

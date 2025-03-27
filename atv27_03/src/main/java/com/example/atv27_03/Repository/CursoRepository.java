@@ -1,6 +1,6 @@
-package com.example.aula.Repository;
+package com.example.atv27_03.Repository;
 
-import com.example.aula.Entity.Curso;
+import com.example.atv27_03.Entity.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CursoRepository extends JpaRepository<Curso, Long> {

@@ -1,79 +1,66 @@
-package com.example.aula.Controller;
+package com.example.atv27_03.Controller;
 
-import com.example.aula.Entity.Curso;
-import com.example.aula.Entity.Professor;
-import com.example.aula.Repository.CursoRepository;
+import com.example.atv27_03.DTO.AlunoDTO;
+import com.example.atv27_03.DTO.CursoDTORequest;
+import com.example.atv27_03.DTO.CursoDTOResponse;
+import com.example.atv27_03.DTO.ProfessorDTO;
+import com.example.atv27_03.Entity.Curso;
+import com.example.atv27_03.Service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/curso")
 public class CursoController {
+
     @Autowired
-    private CursoRepository cursoRepository;
+    private CursoService cursoService;
+
 
     @GetMapping
-    public ResponseEntity<List<Curso>> getAll() {
-        List<Curso> cursos = cursoRepository.findAll();
-        if (cursos.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                    .build();
-        } else {
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(cursos);
-        }
+    public ResponseEntity<List<Curso>> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(cursoService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Curso> getById(@PathVariable Long id){
-        Optional<Curso> cursoOptional = cursoRepository.findById(id);
-        if(cursoOptional.isPresent()){
-            Curso curso = cursoOptional.get();
-            return ResponseEntity.ok(curso);
-        }else{
+    public ResponseEntity<CursoDTOResponse> getById(@PathVariable Long id){
+        Optional<CursoDTOResponse> cursoDTO = cursoService.getById(id);
+        if(cursoDTO.isPresent()){
+            return ResponseEntity.ok(cursoDTO.get());
+        }else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
+//        return cursoDTO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Curso> create(@RequestBody Curso curso){
-        Curso cursoBd = cursoRepository.save(curso);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(cursoBd);
+    public ResponseEntity<CursoDTOResponse> created(@RequestBody CursoDTORequest cursoDtoRequest){
+        CursoDTOResponse curso = cursoService.saveDto(cursoDtoRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(curso);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Curso updateCurso){
-        Optional<Curso> optionalCurso = cursoRepository.findById(id);
-
-        if(optionalCurso.isPresent()){
-            Curso curso = optionalCurso.get();
-            curso.setNome(updateCurso.getNome());
-            curso.setNumeroSala(updateCurso.getNumeroSala());
-            curso.setProfessor(updateCurso.getProfessor());
-
-            return ResponseEntity.ok(cursoRepository.save(curso));
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado");
+    public ResponseEntity<CursoDTOResponse> update(@PathVariable Long id, @RequestBody CursoDTORequest cursoDTORequest){
+        Optional<CursoDTOResponse> cursoDTOResponseOp = cursoService.updateCurso(id, cursoDTORequest);
+        if (cursoDTOResponseOp.isPresent()){
+            return ResponseEntity.ok(cursoDTOResponseOp.get());
+        }else {
+            return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id){
-        Optional<Curso> cursoOptional = cursoRepository.findById(id);
-
-        if(cursoOptional.isPresent()){
-            Curso curso = cursoOptional.get();
-            cursoRepository.delete(curso);
-            return ResponseEntity.ok("Curso deletado com sucesso");
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado");
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        if(cursoService.delete(id)){
+            return ResponseEntity.noContent().build();
+        }else {
+            return ResponseEntity.notFound().build();
         }
     }
 }
